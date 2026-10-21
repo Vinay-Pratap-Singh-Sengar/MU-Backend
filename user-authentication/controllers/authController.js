@@ -58,7 +58,6 @@ export const register = async(req, res) =>{
 }
 
 // // login api : 
-
 export const login = async(req, res) =>{
     try {
         const {email, password} = req.body;
@@ -88,6 +87,7 @@ export const login = async(req, res) =>{
     }
 }
 
+// // get all user :
 export const getAllUser = async(req, res) =>{
     try {
         const list = await userModel.find();
@@ -97,6 +97,7 @@ export const getAllUser = async(req, res) =>{
     }
 }
 
+// // get user by id:
 export const getUserById = async(req, res) =>{
     try {
         const {id} = req.params;
@@ -104,5 +105,32 @@ export const getUserById = async(req, res) =>{
         return res.status(200).json({status:"successful", profile})
     } catch (error) {
         return res.json({message:"error by retrieving single user"})
+    }
+}
+
+// // delete user by id :
+
+export const deleteUserById = async(req, res) =>{
+    try {
+        const {id} = req.params;
+
+        const user = await userModel.findByIdAndDelete(id);
+
+        if(!user){
+            return res.status(404).json({
+                status : "failed",
+                message : "User not found..."
+            })
+        }
+
+        return res.status(200).json({
+            status : "successful",
+            message : "user deleted sucessfully...."
+        })
+    } catch (error) {
+        return res.status(500).json({
+            status: "failed",
+            message : "error occured while deleting user using id"
+        })
     }
 }
