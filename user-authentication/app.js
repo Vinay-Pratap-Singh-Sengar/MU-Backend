@@ -1,9 +1,10 @@
 import express from 'express'
 import connectDB from './db/connectDb.js';
 import userRoute from './routes/auth.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-const PORT = 7070;
+const PORT = process.env.PORT;
 
 // connecting database : 
 connectDB();
