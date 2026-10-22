@@ -1,6 +1,7 @@
 import express from 'express'
 import connectDB from './db/connectDb.js';
 import userRoute from './routes/auth.js';
+import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
@@ -8,7 +9,12 @@ const PORT = process.env.PORT;
 
 // connecting database : 
 connectDB();
+
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
 app.use(express.json());
+
 app.get('/',(req, res) => {
     res.send("user authentication server is ready...");
 })

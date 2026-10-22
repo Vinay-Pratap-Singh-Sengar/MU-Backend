@@ -16,7 +16,7 @@ const router = express.Router();
 router.post("/register", register);
 router.post("/login", login);
 
-router.get("/list", protect, getAllUser);
+router.get("/list", protect,roleAuhorization("admin"), getAllUser);
 router.get("/:id", protect, getUserById);
 router.delete("/:id", protect, roleAuhorization("admin"), deleteUserById)
 
