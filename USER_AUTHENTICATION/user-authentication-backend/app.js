@@ -10,9 +10,12 @@ const PORT = process.env.PORT;
 // connecting database : 
 connectDB();
 
+// // Cross-Origin Resource Sharing (CORS) is a web browser security mechanism that relaxes the Same-Origin Policy, allowing a script on one domain to request and access resources from a different domain.
 app.use(cors({
     origin: "http://localhost:5173"
 }));
+
+// // it is a built-in middleware function in Express.js that parses incoming HTTP requests with JSON payloads.
 app.use(express.json());
 
 app.get('/',(req, res) => {
