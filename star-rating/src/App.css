@@ -1,0 +1,26 @@
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.stars {
+  margin: 20px;
+}
+
+.star {
+  font-size: 45px;
+  color: gray;
+  cursor: pointer;
+}
+
+.active {
+  font-size: 45px;
+  color: gold;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
